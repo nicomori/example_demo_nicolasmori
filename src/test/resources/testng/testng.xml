@@ -6,4 +6,5 @@
 			<package name="com.demo.nicolas.mori.*"></package>
 		</packages>
 	</test>
+	
 </suite>

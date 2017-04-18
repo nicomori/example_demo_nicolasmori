@@ -10,7 +10,7 @@ import junit.framework.TestSuite;
  * Unit test for simple App.
  */
 @CucumberOptions(plugin = { "html:target/cucumber-html-reports", "json:target/cucumber-html-reports/cucumber.json",
-"junit:target/surefire-reports/cucumber-junit.xml" }, features = "src/test/resources/features", tags = "@Case_1A2", glue = {
+"junit:target/surefire-reports/cucumber-junit.xml" }, features = "src/test/resources/features", tags = "@Case_1A3", glue = {
 		"com.demo.nicolas.mori.steps" })
 public class AppTest extends AbstractTestNGCucumberTests {
 }
