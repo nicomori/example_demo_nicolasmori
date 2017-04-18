@@ -11,6 +11,7 @@ import com.demo.nicolas.mori.page.object.mobile.LoginPage;
 import com.demo.nicolas.mori.page.object.mobile.ToolBar;
 import com.demo.nicolas.mori.util.SelectorBrowser;
 
+import cucumber.api.java.After;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.remote.MobileCapabilityType;
 
@@ -67,4 +68,10 @@ public class ParentScenario {
 		driver.navigate().to(url);
 	}
 
+	public void killDriver() {
+		driver.quit();
+	}
+	
+
+	
 }
