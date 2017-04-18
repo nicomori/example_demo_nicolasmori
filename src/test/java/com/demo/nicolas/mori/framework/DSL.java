@@ -10,6 +10,7 @@ import java.util.Date;
 import javax.imageio.ImageIO;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -179,7 +180,7 @@ public abstract class DSL {
 		 */
 		public void waitForAnExplicitElement(By locator) {
 			@SuppressWarnings("unused")
-			WebElement myDynamicElement = (new WebDriverWait(driver, 120))
+			WebElement myDynamicElement = (new WebDriverWait(driver, 60))
 					.until(ExpectedConditions.presenceOfElementLocated(locator));
 		}
 		
@@ -260,8 +261,10 @@ public abstract class DSL {
 		/**
 		 * 
 		 */
-		public void swiftDown(By locator) {
-			// driver.
+		public void stopBrowserLoad() {
+			driver.findElement(By.tagName("body")).sendKeys("Keys.ESCAPE");
+			JavascriptExecutor js = (JavascriptExecutor) driver;
+			js.executeScript("return window.stop");
 		}
 
 	}

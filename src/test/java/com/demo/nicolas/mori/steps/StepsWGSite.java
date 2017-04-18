@@ -1,9 +1,11 @@
 package com.demo.nicolas.mori.steps;
 
 import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterTest;
 
 import com.demo.nicolas.mori.framework.ParentScenario;
 
+import cucumber.api.java.After;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 
@@ -48,6 +50,7 @@ public class StepsWGSite extends ParentScenario {
 	@And("I press the button search")
 	public void stepNumber7() {
 		wg_DashboardPage.pressTheButtonSearch();
+		
 	}
 	
 	@And("press click in the login button and semd user \"(.*?)\" and pass \"(.*?)\"")
@@ -56,9 +59,14 @@ public class StepsWGSite extends ParentScenario {
 	}
 	
 	
-
-	@AfterClass
-	public void after() {
+	@And("I get the text of all the results an show this per terminal")
+	public void stepNumber9() {
+		wg_ResultsPage.getTitlesOfAllResults();
+	}
+	
+	
+	@After
+	public void afster() {
 		closeDriver();
 	}
 }

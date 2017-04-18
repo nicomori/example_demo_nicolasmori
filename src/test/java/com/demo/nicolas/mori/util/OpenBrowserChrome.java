@@ -10,7 +10,7 @@ public class OpenBrowserChrome {
 	public static WebDriver openBowserWithCapabilities(DesiredCapabilities capabilities) {
 
 		System.setProperty("webdriver.chrome.driver",
-				"C:/DriversBrowser/chromedriver.exe");
+				"/Users/nico/Documents/github/example_demo_nicolasmori/chromedriver222");
 
 		WebDriver driver = new ChromeDriver(capabilities);
 
@@ -22,7 +22,7 @@ public class OpenBrowserChrome {
 	public static WebDriver openBowserWithOutCapabilities(WebDriver driver) {
 
 		System.setProperty("webdriver.chrome.driver",
-				"C:/DriversBrowser/chromedriver.exe");
+				"/Users/nico/Documents/github/example_demo_nicolasmori/chromedriver");
 		
 		ChromeOptions options = new ChromeOptions();
 		options.addArguments("test-type");
@@ -36,7 +36,7 @@ public class OpenBrowserChrome {
 
 		driver = new ChromeDriver(options);
 
-//		driver.manage().window().maximize();
+		driver.manage().window().maximize();
 		return driver;
 	}
 

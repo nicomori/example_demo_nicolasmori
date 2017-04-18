@@ -26,7 +26,7 @@ import io.appium.java_client.remote.MobileCapabilityType;
 
 public class ParentScenario {
 
-	private WebDriver driver;
+	private static WebDriver driver;
 
 	protected ToolBar toolBar;
 	protected LoginPage loginPage;

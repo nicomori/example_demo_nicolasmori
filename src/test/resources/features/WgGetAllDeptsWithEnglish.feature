@@ -13,10 +13,12 @@ Scenario Outline: Access to twitter and write a post.
 
 	Given I start the browser 
 	And I access to this url "<url>"
-	And press click in the login button and semd user "<user>" and pass "<pass>" 
+	
 	And I set the name of the city "<city>"
 	And I select the value from the suggestions list with the city "<city>"
 	And I press the button search
+	And press click in the login button and semd user "<user>" and pass "<pass>" 
+	And I get the text of all the results an show this per terminal
 	#And I login to the web application 
 	#Then I press in the menu Transfers 
 	#And I select te first of my favorites contacts 
