@@ -179,7 +179,7 @@ public abstract class DSL {
 		 */
 		public void waitForAnExplicitElement(By locator) {
 			@SuppressWarnings("unused")
-			WebElement myDynamicElement = (new WebDriverWait(driver, 30))
+			WebElement myDynamicElement = (new WebDriverWait(driver, 120))
 					.until(ExpectedConditions.presenceOfElementLocated(locator));
 		}
 		
