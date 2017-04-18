@@ -49,6 +49,13 @@ public class StepsWGSite extends ParentScenario {
 	public void stepNumber7() {
 		wg_DashboardPage.pressTheButtonSearch();
 	}
+	
+	@And("press click in the login button and semd user \"(.*?)\" and pass \"(.*?)\"")
+	public void stepNumber8(String user, String pass) {
+		wg_DashboardPage.loginWithUserAndPass(user, pass);
+	}
+	
+	
 
 	@AfterClass
 	public void after() {
