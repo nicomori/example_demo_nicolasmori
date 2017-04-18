@@ -9,9 +9,11 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import com.demo.nicolas.mori.page.object.mobile.HomePage;
 import com.demo.nicolas.mori.page.object.mobile.LoginPage;
 import com.demo.nicolas.mori.page.object.mobile.ToolBar;
+import com.demo.nicolas.mori.page.object.web.WG_DashboardPage;
+import com.demo.nicolas.mori.page.object.web.WG_ResultsDetailPage;
+import com.demo.nicolas.mori.page.object.web.WG_ResultsPage;
 import com.demo.nicolas.mori.util.SelectorBrowser;
 
-import cucumber.api.java.After;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.remote.MobileCapabilityType;
 
@@ -24,11 +26,15 @@ import io.appium.java_client.remote.MobileCapabilityType;
 
 public class ParentScenario {
 
-	protected WebDriver driver;
+	private WebDriver driver;
 
 	protected ToolBar toolBar;
 	protected LoginPage loginPage;
 	protected HomePage homePage;
+	
+	protected static WG_ResultsPage wg_ResultsPage;
+	protected static WG_ResultsDetailPage wg_ResultsDetailPage;
+	protected static WG_DashboardPage wg_DashboardPage;
 
 	/**
 	 * this method create the object driver for Android.
@@ -58,8 +64,12 @@ public class ParentScenario {
 	
 	public void startBrowser() {
 		System.out.println("Starting driver for Browser Chrome");
-
 		driver = SelectorBrowser.createDriverWithoutCapabilities("chrome",driver);
+		
+		
+		wg_ResultsPage = new WG_ResultsPage(driver);
+		wg_ResultsDetailPage = new WG_ResultsDetailPage(driver);
+		wg_DashboardPage = new WG_DashboardPage(driver);
 		
 	}
 	
@@ -68,9 +78,10 @@ public class ParentScenario {
 		driver.navigate().to(url);
 	}
 
-	public void killDriver() {
+	public void closeDriver() {
 		driver.quit();
 	}
+
 	
 
 	
