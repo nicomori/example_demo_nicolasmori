@@ -22,6 +22,31 @@ public class WG_ResultsPage extends ParentPage {
 	By RESULT_DETAIL_REQUISITES = By.xpath("(//div[@class='col-sm-6'])[2]");
 	
 	
+	By HOOK = By.xpath("(//*[contains(text(),'Miete')])[1]");
+	String TITLE_CLUSTER = "(//h3[@class='headline headline-list-view noprint'])[%s]/a";
+	
+	
+	public void getTitlesOfAllResults() {
+		
+		waitForAnExplicitElement(HOOK);
+		waitForAnExplicitElement(HOOK);
+		waitForAnExplicitElement(HOOK);
+		waitForAnExplicitElement(HOOK);
+		waitForAnExplicitElement(HOOK);
+		
+		for (int i = 1; i < 22; i++) {
+			System.out.println(getTextByLocator(By.xpath(String.format(TITLE_CLUSTER,i))));
+			
+		}
+	}
+	
+	
+	
+	
+	
+	
+	
+	
 	public void setMaxRentAndPressApplyFilterButton(String maxRent) {
 		waitForAnExplicitElement(FIELD_MAX_PRICE);
 		sendKeysToLocator(FIELD_MAX_PRICE, maxRent);

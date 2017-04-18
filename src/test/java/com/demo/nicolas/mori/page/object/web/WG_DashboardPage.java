@@ -1,6 +1,7 @@
 package com.demo.nicolas.mori.page.object.web;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 
 import com.demo.nicolas.mori.framework.ParentPage;
@@ -46,6 +47,7 @@ public class WG_DashboardPage extends ParentPage {
 	
 	public void pressTheButtonSearch() {
 		click(BUTTON_FIND);
+		stopBrowserLoad();
 	}
 	
 	public void selectOptionFromList(String textToFind) {
@@ -55,10 +57,22 @@ public class WG_DashboardPage extends ParentPage {
 	
 	public void loginWithUserAndPass(String user, String pass){
 		waitForAnExplicitElement(BUTTON_LOGIN);
+//		try {
+//			Thread.sleep(2000);
+//		} catch (Exception e) {
+//			// TODO: handle exception
+//		}
+		stopBrowserLoad();
 		click(BUTTON_LOGIN);
 		waitForAnExplicitElement(POP_UP_LOGIN_BUTTON_LOGIN);
 		sendKeysToLocator(POP_UP_LOGIN_FIELD_USER, user);
 		sendKeysToLocator(POP_UP_LOGIN_FIELD_PASSWORD, pass);
 		click(POP_UP_LOGIN_BUTTON_LOGIN);
+		stopBrowserLoad();
+//		try {
+//			Thread.sleep(4000);
+//		} catch (Exception e) {
+//			// TODO: handle exception
+//		}
 	}
 }
