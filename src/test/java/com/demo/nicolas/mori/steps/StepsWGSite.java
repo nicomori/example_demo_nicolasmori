@@ -11,8 +11,6 @@ public class StepsWGSite extends ParentScenario {
 
 	@And("I set the name of the city \"(.*?)\"")
 	public void stepNumber1(String cityName) {
-//		WG_DashboardPage wg_DashboardPage = new WG_DashboardPage(driver);
-		
 		System.out.println("Set the name of the city");
 		wg_DashboardPage.setTheNameOfTheCity(cityName);
 	}
@@ -39,10 +37,21 @@ public class StepsWGSite extends ParentScenario {
 	@And("I take if exist the value of requisites and show in the screen")
 	public void stepNumber6() {
 	}
+	
+	
+	
+	@And("I select the value from the suggestions list with the city \"(.*?)\"")
+	public void stepNumber6a(String cityToFind) {
+		wg_DashboardPage.selectOptionFromList(cityToFind);
+	}
+	
+	@And("I press the button search")
+	public void stepNumber7() {
+		wg_DashboardPage.pressTheButtonSearch();
+	}
 
 	@AfterClass
 	public void after() {
-//		dbFlagsACero();
 		closeDriver();
 	}
 }

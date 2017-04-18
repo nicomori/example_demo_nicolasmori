@@ -26,15 +26,15 @@ import io.appium.java_client.remote.MobileCapabilityType;
 
 public class ParentScenario {
 
-	protected WebDriver driver;
+	private WebDriver driver;
 
 	protected ToolBar toolBar;
 	protected LoginPage loginPage;
 	protected HomePage homePage;
 	
-	protected WG_ResultsPage wg_ResultsPage;
-	protected WG_ResultsDetailPage wg_ResultsDetailPage;
-	protected WG_DashboardPage wg_DashboardPage;
+	protected static WG_ResultsPage wg_ResultsPage;
+	protected static WG_ResultsDetailPage wg_ResultsDetailPage;
+	protected static WG_DashboardPage wg_DashboardPage;
 
 	/**
 	 * this method create the object driver for Android.

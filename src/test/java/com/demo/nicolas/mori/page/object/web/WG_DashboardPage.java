@@ -10,7 +10,6 @@ public class WG_DashboardPage extends ParentPage {
 
 	public WG_DashboardPage(WebDriver driver) {
 		super(driver);
-		System.out.println("WG_DashboardPage STARTEEEEED!!!!!!!!!!!!!!!!!");
 	}
 	
 	By INPUT_CITY = By.xpath("//input[@id='autocompinp']");
@@ -18,8 +17,11 @@ public class WG_DashboardPage extends ParentPage {
 	By HOUSE_TYPE_OPTION_WG_ZIMMER = By.xpath("//a[contains(text(),'%s')]");
 	By BUTTON_FIND = By.xpath("//input[@id='search_button']");
 	
+	String LIST_OPTION = "//div[contains(@class,'autocomplete-suggestion')]/strong[contains(text(),'%s')]";
+	
+	
+	
 	public void setTheNameOfTheCity(String cityName) {
-		System.out.println("333333333333333");
 		waitForAnExplicitElement(INPUT_CITY);
 		sendKeysToLocator(INPUT_CITY, cityName);
 	}
@@ -33,4 +35,12 @@ public class WG_DashboardPage extends ParentPage {
 		click(BUTTON_FIND);
 	}
 	
+	public void pressTheButtonSearch() {
+		click(BUTTON_FIND);
+	}
+	
+	public void selectOptionFromList(String textToFind) {
+		waitForAnExplicitElement(By.xpath(String.format(LIST_OPTION,textToFind)));
+		click(By.xpath(String.format(LIST_OPTION,textToFind)));
+	}
 }

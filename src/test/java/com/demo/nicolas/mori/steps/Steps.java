@@ -14,19 +14,14 @@ public class Steps extends ParentScenario {
 
 	@Given("I start the browser")
 	public void accessToTheBrowser() {
+		System.out.println("Starting the browser");
 		startBrowser();
 	}
 
-
 	@And("I access to this url \"(.*)?\"")
 	public void a111(String url) {
-		System.out.println("1111111111111111111111111111111");
+		System.out.println("Accessint to the url: "+url);
 		navigateTo(url);
 	}
-
-
-	
-
-
 
 }

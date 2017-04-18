@@ -14,19 +14,20 @@ Scenario Outline: Access to twitter and write a post.
 	Given I start the browser 
 	And I access to this url "<url>"
 	And I set the name of the city "<city>"
-	And I login to the web application 
-	Then I press in the menu Transfers 
-	And I select te first of my favorites contacts 
-	And I set in the amount field the amount 
-	And I include in the text reference this test 
-	And I access the Transfer Code 
-	And I press the button Transfer 
-	Then I check if I can see the pop up message. 
-
+	And I select the value from the suggestions list with the city "<city>"
+	And I press the button search
+	#And I login to the web application 
+	#Then I press in the menu Transfers 
+	#And I select te first of my favorites contacts 
+	#And I set in the amount field the amount 
+	#And I include in the text reference this test 
+	#And I access the Transfer Code 
+	#And I press the button Transfer 
+	#Then I check if I can see the pop up message. 
 
 Examples:
 | browser 	| city  	| url						 	| deptType		| maxRentValue  |
-| chrome  	| München	| http://www.wg-gesucht.de/		| WG-Zimmer		| 750			|
+| chrome  	| München   | http://www.wg-gesucht.de/		| WG-Zimmer		| 750			|
 
 
 
