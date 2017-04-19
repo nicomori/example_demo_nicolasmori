@@ -256,6 +256,16 @@ public abstract class DSL {
 		}
 		
 		
+		/**
+		 * 
+		 */
+		public void scrollDown() {
+			JavascriptExecutor jse = (JavascriptExecutor)driver;
+			
+			jse.executeScript("scroll(0, 5250);");
+			
+		}
+		
 		
 		
 		/**
