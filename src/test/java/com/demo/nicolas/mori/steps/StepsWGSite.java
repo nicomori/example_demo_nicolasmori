@@ -64,6 +64,11 @@ public class StepsWGSite extends ParentScenario {
 		wg_ResultsPage.getTitlesOfAllResults();
 	}
 	
+	@And("I get all the apartments and verify this")
+	public void stepNumber10() {
+		
+	}
+	
 	
 	@After
 	public void afster() {
