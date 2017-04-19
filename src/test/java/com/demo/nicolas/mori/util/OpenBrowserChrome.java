@@ -20,10 +20,22 @@ public class OpenBrowserChrome {
 	}
 	
 	public static WebDriver openBowserWithOutCapabilities(WebDriver driver) {
-
-		System.setProperty("webdriver.chrome.driver",
-				"/Users/nico/Documents/github/example_demo_nicolasmori/chromedriver");
 		
+		String oS = System.getProperty("os.name").toLowerCase();
+
+		if (oS.contains("windows")){
+			System.setProperty("webdriver.chrome.driver",
+					"C:/DriversBrowser/chromedriver.exe");
+				
+		}else if (oS.contains("mac")){
+			System.setProperty("webdriver.chrome.driver",
+					"/Users/nico/Documents/github/example_demo_nicolasmori/chromedriver");
+		}else{
+			System.out.println("This is the OS: "+oS);
+			System.out.println("OS is not compatible, you need define the path of the chromedriver again");
+			System.exit(0);
+		}
+				
 		ChromeOptions options = new ChromeOptions();
 		options.addArguments("test-type");
 		options.addArguments("start-maximized");
@@ -36,7 +48,7 @@ public class OpenBrowserChrome {
 
 		driver = new ChromeDriver(options);
 
-		driver.manage().window().maximize();
+//		driver.manage().window().maximize();
 		return driver;
 	}
 

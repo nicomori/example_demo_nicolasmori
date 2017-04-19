@@ -34,7 +34,7 @@ public class WG_ResultsPage extends ParentPage {
 		waitForAnExplicitElement(HOOK);
 		waitForAnExplicitElement(HOOK);
 		
-		for (int i = 1; i < 22; i++) {
+		for (int i = 1; i < 20; i++) {
 			System.out.println(getTextByLocator(By.xpath(String.format(TITLE_CLUSTER,i))));
 			
 		}

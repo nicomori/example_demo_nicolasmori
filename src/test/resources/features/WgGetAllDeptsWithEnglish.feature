@@ -19,14 +19,6 @@ Scenario Outline: Access to twitter and write a post.
 	And I press the button search
 	And press click in the login button and semd user "<user>" and pass "<pass>" 
 	And I get the text of all the results an show this per terminal
-	#And I login to the web application 
-	#Then I press in the menu Transfers 
-	#And I select te first of my favorites contacts 
-	#And I set in the amount field the amount 
-	#And I include in the text reference this test 
-	#And I access the Transfer Code 
-	#And I press the button Transfer 
-	#Then I check if I can see the pop up message. 
 
 Examples:
 | browser 	| city  	| url						 	| deptType		| maxRentValue  | user					 | pass	 	| 
