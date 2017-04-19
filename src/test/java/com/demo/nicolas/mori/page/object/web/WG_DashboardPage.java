@@ -56,19 +56,20 @@ public class WG_DashboardPage extends ParentPage {
 	}
 	
 	public void loginWithUserAndPass(String user, String pass){
+		System.out.println("Starting the login process");
 		waitForAnExplicitElement(BUTTON_LOGIN);
-//		try {
-//			Thread.sleep(2000);
-//		} catch (Exception e) {
-//			// TODO: handle exception
-//		}
 		stopBrowserLoad();
+		System.out.println("");
 		click(BUTTON_LOGIN);
+		System.out.println("");
 		waitForAnExplicitElement(POP_UP_LOGIN_BUTTON_LOGIN);
 		sendKeysToLocator(POP_UP_LOGIN_FIELD_USER, user);
+		System.out.println("");
 		sendKeysToLocator(POP_UP_LOGIN_FIELD_PASSWORD, pass);
+		System.out.println("");
 		click(POP_UP_LOGIN_BUTTON_LOGIN);
 		stopBrowserLoad();
+		System.out.println("");
 //		try {
 //			Thread.sleep(4000);
 //		} catch (Exception e) {
