@@ -61,12 +61,14 @@ public class StepsWGSite extends ParentScenario {
 	
 	@And("I get the text of all the results an show this per terminal")
 	public void stepNumber9() {
-		wg_ResultsPage.getTitlesOfAllResults();
+//		wg_ResultsPage.getTitlesOfAllResults();
+		wg_ResultsPage.clickInAllTheTitles();
+		
 	}
 	
 	@And("I get all the apartments and verify this")
 	public void stepNumber10() {
-		
+		wg_ResultsPage.getAllTheApartments();
 	}
 	
 	

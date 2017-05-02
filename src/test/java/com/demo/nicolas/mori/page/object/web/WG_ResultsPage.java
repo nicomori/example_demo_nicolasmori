@@ -1,11 +1,13 @@
 package com.demo.nicolas.mori.page.object.web;
 
-import java.net.URLEncoder;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 import com.demo.nicolas.mori.framework.ParentPage;
+import com.demo.nicolas.mori.objects.ApartmentsDetails;
 
 public class WG_ResultsPage extends ParentPage {
 
@@ -24,6 +26,8 @@ public class WG_ResultsPage extends ParentPage {
 	By RESULT_DETAIL_FLAG_BRITISH = By.xpath("//img[contains(@alt,'Englisch') and contains(@title,'Englisch')]");
 	By RESULT_DETAIL_REQUISITES = By.xpath("(//div[@class='col-sm-6'])[2]");
 
+	
+	By TEXT_AREA = By.xpath("//textarea");
 	
 	//String q = "»";
 	
@@ -86,6 +90,106 @@ public class WG_ResultsPage extends ParentPage {
 			}
 		}
 	}
+	
+	
+	
+	public void clickInAllTheTitles() {
+		String pepe = null;
+
+		for (int f = 1; f < 31; f++) {
+
+			pepe = null;
+			System.out.println("iniciando pagina numero: " + f);
+
+			System.out.println("Starting to collect the titles of the page.");
+
+			System.out.println("Waiting for the element HOOK appear in the screen");
+			waitForAnExplicitElement(HOOK);
+			System.out.println("The Element HOOK appear, we can continue");
+
+			System.out.println("Starting to collect the first title.");
+			do {
+				pepe = getTextByLocator(By.xpath(String.format(TITLE_CLUSTER, 1)));
+				try {
+					Thread.sleep(2000);
+				} catch (Exception e) {
+					// TODO: handle exception
+				}
+			} while (pepe == null);
+			
+			System.out.println("Starting to collect all the titles, and show this per screen");
+			System.out.println("\n--------------------\n");
+			for (int i = 1; i < 20; i++) {
+				stopBrowserLoad();
+				
+				System.out.println("Page = "+f+" - Element Number = "+i+" - "+getTextByLocator(By.xpath(String.format(TITLE_CLUSTER, i))));
+				
+				System.out.println("=========================");
+				System.out.println("=========================");
+				System.out.println("=========================");
+				System.out.println("=========================");
+				System.out.println("=========================");
+				System.out.println("=========================");
+				System.out.println("=========================");
+				System.out.println("=========================");
+				System.out.println("=========================");
+				System.out.println("=========================");
+				System.out.println("=========================");
+				System.out.println("=========================");
+				
+				clickJS(By.xpath(String.format(TITLE_CLUSTER, i)));
+				stopBrowserLoad();
+				
+				clickJS(TEXT_AREA);
+				stopBrowserLoad();
+				sendKeysToLocator(TEXT_AREA, ".");
+				stopBrowserLoad();
+				
+//				try {
+//					Thread.sleep(3000);
+//				} catch (Exception e) {
+//					// TODO: handle exception
+//				}
+				
+				buttonBackDevice();
+				
+				
+			}
+			System.out.println("\n===========================================================");
+			System.out.println("Finish with the collections of titles. For the page: " + f);
+			System.out.println("===========================================================\n");
+			
+			scrollDown();
+			
+			try {
+				Thread.sleep(3000);
+			} catch (Exception e) {
+				// TODO: handle exception
+			}
+			click(LINK_TO_NEXT_PAGE);
+			try {
+				Thread.sleep(3000);
+			} catch (Exception e) {
+				// TODO: handle exception
+			}
+		}
+	}
+	
+	String CLUSTERS_OF_APARTMENTS = "//h3[@class='headline headline-list-view noprint']/a";
+	
+	public void getAllTheApartments() {
+		
+		List<ApartmentsDetails> apartamentList = new ArrayList<ApartmentsDetails>();
+		apartamentList  = storeDataInAList(CLUSTERS_OF_APARTMENTS);
+		
+		for (int i = 0; i < apartamentList.size(); i++) {
+			
+			System.out.println(apartamentList.get(i).getTitle());
+			
+		}
+		
+	}
+	
 
 	public void makeClickInTheNextPage() {
 		click(LINK_TO_NEXT_PAGE);
