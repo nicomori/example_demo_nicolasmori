@@ -46,7 +46,7 @@ public class ParentScenario {
 
 		DesiredCapabilities cap = new DesiredCapabilities();
 		cap.setCapability(MobileCapabilityType.DEVICE_NAME, uuid);
-		cap.setCapability(MobileCapabilityType.APP_PACKAGE, "com.android2.calculator3");
+		cap.setCapability(MobileCapabilityType.APP_PACKAGE, "com.wggesucht.android");
 		cap.setCapability(MobileCapabilityType.PLATFORM_VERSION, "6.0");
 		cap.setCapability(MobileCapabilityType.PLATFORM_NAME, "ANDROID");
 

@@ -19,7 +19,7 @@ Scenario Outline: Access to twitter and write a post.
 	And I press the button search
 	And press click in the login button and semd user "<user>" and pass "<pass>" 
 	
-	And I get all the apartments and verify this
+	#And I get all the apartments and verify this
 	And I get the text of all the results an show this per terminal
 
 Examples:
