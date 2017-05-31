@@ -1,8 +1,5 @@
 package com.demo.nicolas.mori.steps;
 
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.AfterTest;
-
 import com.demo.nicolas.mori.framework.ParentScenario;
 
 import cucumber.api.java.After;
