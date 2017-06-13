@@ -12,6 +12,7 @@ import java.util.List;
 import javax.imageio.ImageIO;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Dimension;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -19,6 +20,8 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.demo.nicolas.mori.objects.ApartmentsDetails;
+
+import io.appium.java_client.android.AndroidDriver;
 
 /**
  * This Class is an abstract class, and created for make the interaction with
@@ -138,6 +141,15 @@ public abstract class DSL {
 	 */
 	public String getTextByLocator(By locator) {
 		return driver.findElement(locator).getText();
+	}
+	
+	/**
+	 * 
+	 */
+	public String getTextInContentDescriptionByLocator(By locator) {
+		return ((AndroidDriver) driver).findElement(locator).getAttribute("name");
+		
+		
 	}
 
 	/**
@@ -307,6 +319,97 @@ public abstract class DSL {
 		driver.findElement(By.tagName("body")).sendKeys("Keys.ESCAPE");
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 		js.executeScript("return window.stop");
+	}
+	
+	/**
+	 * 
+	 */
+	public boolean verifyIfAWebelementIsDeployed(By locator) {
+		return driver.findElement(locator).isDisplayed();
+	}
+	
+	
+	// ############### MOBILE SECTIONS ######################
+
+	
+	
+	/**
+	 * this method make scroll down in a mobile Native App until a text appear,
+	 * and after all that make click in the text.
+	 * 
+	 * @param textToFind
+	 *            this is the text to find and make click.
+	 */
+	public void scrollDownUntilFindAStringAndMakeClick(String textToFind) {
+		boolean flag = false;
+
+		Dimension dimensions = driver.manage().window().getSize();
+
+		Double screenHeightStart = dimensions.getHeight() * 0.4;
+		Double screenHeightEnd = dimensions.getHeight() * 0.2;
+
+		int scrollStart = screenHeightStart.intValue();
+		System.out.println("s=" + scrollStart);
+
+		int scrollEnd = screenHeightEnd.intValue();
+
+		flag = false;
+
+		while (flag == false) {
+			try {
+				driver.findElement(By.xpath("//android.widget.TextView[contains(@text,'" + textToFind + "')]")).click();
+
+				flag = true;
+			} catch (Exception e) {
+				((AndroidDriver) driver).swipe(0, scrollStart, 0, scrollEnd, 500);
+			}
+		}
+	}
+
+	/**
+	 * this method is for make a refresh in the mobile native apps.
+	 * 
+	 */
+	public void refreshSwipingToDown() {
+		Dimension dimensions = driver.manage().window().getSize();
+
+		Double screenHeightStart = dimensions.getHeight() * 0.2;
+		Double screenHeightEnd = dimensions.getHeight() * 0.5;
+
+		int scrollStart = screenHeightStart.intValue();
+		int scrollEnd = screenHeightEnd.intValue();
+
+		((AndroidDriver) driver).swipe(0, scrollStart, 0, scrollEnd, 200);
+
+	}
+	
+	/**
+	 * this method is for make a refresh in the mobile native apps.
+	 * 
+	 */
+	public void scrollDownDevice() {
+		System.out.println("Preparing the scroll down.");
+		boolean flag = false;
+		
+		Dimension dimensions = driver.manage().window().getSize();
+
+		Double screenHeightStart = dimensions.getHeight() * 0.6;
+		Double screenHeightEnd = dimensions.getHeight() * 0.4;
+
+		int scrollStart = screenHeightStart.intValue();
+
+		int scrollEnd = screenHeightEnd.intValue();
+
+		System.out.println("Starting to make the scroll down");
+		((AndroidDriver) driver).swipe(0, scrollStart, 0, scrollEnd, 500);
+		System.out.println("Scroll down completed");
+	}
+	
+	/**
+	 * 
+	 */
+	public void buttonBackMobile() {
+		((AndroidDriver) driver).navigate().back();
 	}
 
 }

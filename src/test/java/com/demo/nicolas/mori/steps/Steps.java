@@ -8,8 +8,13 @@ import cucumber.api.java.en.Given;
 public class Steps extends ParentScenario {
 	
 	@Given("I start the android native calculator with this device \"(.*)?\"")
-	public void accessTheAndroid(String uuid) {
-		startAndroid(uuid);
+	public void accessTheAndroid(String uuid, String appPackage) {
+		startAndroid(uuid,appPackage);
+	}
+	
+	@Given("I start the android native app with this uuid \"(.*)?\" and this appPackage \"(.*)?\"")
+	public void startAndroidNativeApp(String uuid, String appPackage) {
+		startAndroid(uuid,appPackage);
 	}
 
 	@Given("I start the browser")

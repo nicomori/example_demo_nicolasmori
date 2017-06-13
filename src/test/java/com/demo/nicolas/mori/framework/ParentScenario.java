@@ -6,7 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
-import com.demo.nicolas.mori.page.object.mobile.HomePage;
+import com.demo.nicolas.mori.page.object.androidnative.HomePage;
 import com.demo.nicolas.mori.page.object.mobile.LoginPage;
 import com.demo.nicolas.mori.page.object.mobile.ToolBar;
 import com.demo.nicolas.mori.page.object.web.WG_DashboardPage;
@@ -35,6 +35,8 @@ public class ParentScenario {
 	protected static WG_ResultsPage wg_ResultsPage;
 	protected static WG_ResultsDetailPage wg_ResultsDetailPage;
 	protected static WG_DashboardPage wg_DashboardPage;
+	
+	protected static HomePage homePageNativeWG;
 
 	/**
 	 * this method create the object driver for Android.
@@ -42,11 +44,11 @@ public class ParentScenario {
 	 * @param uuid
 	 *            of the device to use.
 	 */
-	public void startAndroid(String uuid) {
+	public void startAndroid(String uuid, String appPackage) {
 
 		DesiredCapabilities cap = new DesiredCapabilities();
 		cap.setCapability(MobileCapabilityType.DEVICE_NAME, uuid);
-		cap.setCapability(MobileCapabilityType.APP_PACKAGE, "com.wggesucht.android");
+		cap.setCapability(MobileCapabilityType.APP_PACKAGE, appPackage);
 		cap.setCapability(MobileCapabilityType.PLATFORM_VERSION, "6.0");
 		cap.setCapability(MobileCapabilityType.PLATFORM_NAME, "ANDROID");
 
@@ -56,6 +58,7 @@ public class ParentScenario {
 			System.out.println("Exeption at the moment to generate the driver = " + e);
 		}
 
+		homePageNativeWG = new HomePage(driver);
 		toolBar = new ToolBar(driver);
 		loginPage = new LoginPage(driver);
 		homePage = new HomePage(driver);

@@ -14,6 +14,21 @@ public class StepsMobile extends ParentScenario {
 		System.out.println("22222222222222222222222222");
 	}
 
+	@Given("I make click in the button munich")
+	public void a2222() {
+		System.out.println("22222222222222222222222222");
+		homePageNativeWG.makeClikInMunichButton();
+		
+		System.out.println("Empezando a ver los avisos");
+		homePageNativeWG.makeClikInMunichButton3();
+		
+		try {
+			Thread.sleep(333333333);
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+	}
+	
 	
 
 }
